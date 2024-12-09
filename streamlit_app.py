@@ -3,8 +3,8 @@ import requests
 import pandas as pd
 #import matplotlib.pyplot as plt
 from datetime import datetime, timedelta
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.preprocessing import LabelEncoder
+#from sklearn.ensemble import RandomForestRegressor
+#from sklearn.preprocessing import LabelEncoder
 
 # Load the processed data and model setup
 processed_data_path = '/mnt/data/ProcessedTicketData.csv'
