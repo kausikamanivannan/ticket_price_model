@@ -157,7 +157,7 @@ def main():
 
     # Predict button and price display
     if st.button("Predict Price"):
-        predict_ticket_price(day_of_concert, current_ticket_price)
+        predict_ticket_price(int(day_of_concert), current_ticket_price)
 
 if __name__ == "__main__":
     main()
