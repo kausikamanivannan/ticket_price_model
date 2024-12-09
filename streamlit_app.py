@@ -59,4 +59,5 @@ def home_page():
                 
         except: 
             requests.exceptions.RequestException as e: 
-                st.error(f"An error occurred: {e}") st.write("Please try again later or check your input.")
+                st.error(f"An error occurred: {e}")
+                st.write("Please try again later or check your input.")
