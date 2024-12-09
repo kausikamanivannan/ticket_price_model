@@ -23,6 +23,16 @@ for col in ['artist', 'venue', 'city', 'state', 'ticket_vendor']:
         features[col] = encoder.fit_transform(data[col])
         encoders[col] = encoder
 
+
+############################################################################################################
+# Ensure 'days_since_epoch' is numeric and drop the 'date' column if present
+if 'date' in features:
+    features = features.drop(columns=['date'])
+
+features['days_since_epoch'] = (data['date'] - pd.Timestamp("1970-01-01")).dt.total_seconds() / (60 * 60 * 24)
+############################################################################################################
+
+
 X = features
 y = data[target]
 
