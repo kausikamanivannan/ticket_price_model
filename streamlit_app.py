@@ -9,10 +9,10 @@ from sklearn.metrics import mean_squared_error, r2_score
 import matplotlib.pyplot as plt
 
 
-from google.colab import drive
-drive.mount('/content/drive')
+# from google.colab import drive
+# drive.mount('/content/drive')
 
-data = pd.read_csv('/content/drive/MyDrive/DSBA 6156/DSBA 6156 Final Project/random_forest/ProcessedTicketData.csv')
+data = pd.read_csv('ProcessedTicketData.csv')
 print(f"Features shape: {data.shape}")
 
 # Convert 'date' column to string, take first 10 characters, and convert to datetime
