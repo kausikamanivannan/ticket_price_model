@@ -32,10 +32,9 @@ def home_page():
             "classificationName": "Music"
         }
 
-        try:
-            response = requests.get(f"{BASE_URL}events.json", params=params)
-            response.raise_for_status()  # Raise HTTPError for bad responses
+        response = requests.get(f"{BASE_URL}events.json", params=params)
 
+        if response.status_code == 200:
             data = response.json()
             events = data.get("_embedded", {}).get("events", [])
 
@@ -56,8 +55,5 @@ def home_page():
                         change_page("next")  # Navigate to the next page
             else:
                 st.write("No upcoming events found. Try a different search.")
-                
-        except: 
-            requests.exceptions.RequestException as e: 
-                st.error(f"An error occurred: {e}")
-                st.write("Please try again later or check your input.")
+        else:
+            st.error(f"Error {response.status_code}: {response.text}")
