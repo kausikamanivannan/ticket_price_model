@@ -1,5 +1,3 @@
-streamlit app with ticketmaster API:
-
 import streamlit as st
 import requests
 
