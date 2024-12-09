@@ -57,8 +57,8 @@ def home_page():
                         # choiceName = name
                         # choiceDate = date
                         # choiceVenue = venue
-            else:
-                st.write("name: ", name, "date:",   date ,"venue:", venue)
+            # else:
+            #     st.write("name: ", name, "date:",   date ,"venue:", venue)
                         #choiceName = "No Selection Made"
                         #choiceDate = "date"
                         #choiceVenue = "venue"
