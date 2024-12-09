@@ -59,10 +59,12 @@ if "selected_event" in st.session_state:
 
     # Fetch detailed event information
     event_id = selected_event['id']
+    st.write(f"Fetching details for event ID: {event_id}")  # Debugging message
     detail_response = requests.get(f"{BASE_URL}events/{event_id}.json", params={"apikey": API_KEY})
 
     if detail_response.status_code == 200:
         detail_data = detail_response.json()
+        st.write("Detailed event data fetched successfully!")  # Debugging message
 
         # Display additional details
         st.write("### Event Details")
@@ -95,6 +97,9 @@ if "selected_event" in st.session_state:
             st.write(info)
     else:
         st.error(f"Error {detail_response.status_code}: {detail_response.text}")
+        st.write("### Debugging Info")
+        st.json(detail_response.json())
+
 
 # import streamlit as st
 # import requests
