@@ -5,9 +5,7 @@ import requests
 API_KEY = "IqvAJBcdXQd2ySO7fh4k9Laa1M4AEJ0N"
 BASE_URL = "https://app.ticketmaster.com/discovery/v2/"
 
-# Define Global Veriables
-
-Initialize the current page in session state
+# Initialize the current page in session state
 if "current_page" not in st.session_state:
     st.session_state.current_page = "home"
 
