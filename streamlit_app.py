@@ -52,7 +52,7 @@ def home_page():
                             "date": date,
                             "venue": venue
                         }
-                        st.write("WRITE")
+                         st.write("Thank you for your selection")
             
             #change_page('page_2.py')  # Navigate to the next page
             else:
