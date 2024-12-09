@@ -153,7 +153,7 @@ def main():
     st.title("Concert Ticket Price Predictor")
 
     # User input for Artist and Venue
-    day_of_concert = st.text_input("Enter Day of Concert YYYY-MM-DD")
+    day_of_concert = st.text_input("Enter Days Unitl Concert")
     current_ticket_price = st.text_input("Enter Ticket Price")
 
     # Predict button and price display
