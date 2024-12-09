@@ -48,9 +48,6 @@ if search_button:
     else:
         st.error(f"Error {response.status_code}: {response.text}")
 
-# # Check if an event has been selected
-# if "selected_event" in st.session_state:
-#     st.write("### Selected Event")
 #     selected_event = st.session_state.selected_event
 #     st.write(f"- **Name**: {selected_event['name']}")
 #     st.write(f"- **Date**: {selected_event['date']}")
