@@ -38,13 +38,16 @@ def home_page():
         }
 
         response = requests.get(f"{BASE_URL}events.json", params=params)
-
+    
         if response.status_code == 200:
             data = response.json()
             events = data.get("_embedded", {}).get("events", [])
 
-            if events:
-                st.write(f"Found {len(events)} upcoming events:")
+       else:
+            st.error(f"Error {response.status_code}: {response.text}")
+
+        if events:
+            st.write(f"Found {len(events)} upcoming events:")
 
                 for event in events:
                     name = event.get("name", "N/A")
@@ -64,8 +67,7 @@ def home_page():
             #change_page('page_2.py')  # Navigate to the next page
             else:
                 st.write("No upcoming events found. Try a different search.")
-        else:
-            st.error(f"Error {response.status_code}: {response.text}")
+
    
     st.write("name: ", choiceName, "date:", choiceDate ,"venue:", choiceVenue) 
 
