@@ -11,7 +11,7 @@ import math
 # Load the processed data and model setup
 processed_data_path = 'ProcessedTicketData.csv'
 data = pd.read_csv(processed_data_path)
-data['date'] = pd.to_datetime(data['date'])
+data['date'] = pd.to_datetime(data['date'], utc=True)
 
 target = 'max_price'
 features = data.drop(columns=['event_id', 'max_price'])
