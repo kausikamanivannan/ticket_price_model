@@ -53,9 +53,9 @@ def home_page():
 
                     if st.button(f"Select: {name} at {venue} on {date}"):
                         st.write("name: ", name, "date:",   date ,"venue:", venue)
-                        #choiceName = name
-                        #choiceDate = date
-                        #choiceVenue = venue
+                        choiceName = name
+                        choiceDate = date
+                        choiceVenue = venue
                     else:
                         st.write("name: ", name, "date:",   date ,"venue:", venue)
                         #choiceName = "No Selection Made"
