@@ -52,7 +52,7 @@ def home_page():
                             "date": date,
                             "venue": venue
                         }
-                        change_page("next")  # Navigate to the next page
+                        change_page('page_2.py')  # Navigate to the next page
             else:
                 st.write("No upcoming events found. Try a different search.")
         else:
