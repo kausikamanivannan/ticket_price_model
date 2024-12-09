@@ -135,15 +135,15 @@ lowest_price_date = dates[prices.index(lowest_price)]
 print(f"Lowest price: ${lowest_price:.2f} on {lowest_price_date.date()}")
 
 # Plot the prices over time
-plt.figure(figsize=(10, 6))
-plt.plot(dates, prices, label='Predicted Ticket Price', marker='o')
-plt.axvline(x=lowest_price_date, color='red', linestyle='--', label='Lowest Price')
-plt.title("Predicted Ticket Prices Leading Up to the Event")
-plt.xlabel("Date")
-plt.ylabel("Predicted Ticket Price ($)")
-plt.legend()
-plt.grid()
-plt.show()
+# plt.figure(figsize=(10, 6))
+# plt.plot(dates, prices, label='Predicted Ticket Price', marker='o')
+# plt.axvline(x=lowest_price_date, color='red', linestyle='--', label='Lowest Price')
+# plt.title("Predicted Ticket Prices Leading Up to the Event")
+# plt.xlabel("Date")
+# plt.ylabel("Predicted Ticket Price ($)")
+# plt.legend()
+# plt.grid()
+# plt.show()
 
 
 # Streamlit App
