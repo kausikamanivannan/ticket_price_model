@@ -48,9 +48,8 @@ def home_page():
 
                     if st.button(f"Select: {name} at {venue} on {date}"):
                         st.write("name: ", name, "date:",   date ,"venue:", venue)
-                        
-                         
-            
+                    else:
+                        st.write("No upcoming events found. Try a different search.")
             #change_page('page_2.py')  # Navigate to the next page
             else:
                 st.write("No upcoming events found. Try a different search.")
