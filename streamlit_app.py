@@ -51,21 +51,22 @@ def home_page():
 
                     if st.button(f"Select: {name} at {venue} on {date}"):
                         #st.write("name: ", name, "date:",   date ,"venue:", venue)
-                        choiceName = name
-                        choiceDate = date
-                        choiceVenue = venue
+                        #choiceName = name
+                        #choiceDate = date
+                        #choiceVenue = venue
                         
                     else:
-                        choiceName = "No Selection Made"
-                        choiceDate = "date"
-                        choiceVenue = "venue"
+                        st.write("name: ", name, "date:",   date ,"venue:", venue)
+                        #choiceName = "No Selection Made"
+                        #choiceDate = "date"
+                        #choiceVenue = "venue"
             #change_page('page_2.py')  # Navigate to the next page
             else:
                 st.write("No upcoming events found. Try a different search.")
         else:
             st.error(f"Error {response.status_code}: {response.text}")
 
-st.write("name: ", choiceName, "date:", choiceDate ,"venue:", choiceVenue)
+#st.write("name: ", choiceName, "date:", choiceDate ,"venue:", choiceVenue)
 
 # Define the Next Page
 def next_page():
