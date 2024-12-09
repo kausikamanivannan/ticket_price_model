@@ -23,10 +23,9 @@ def home_page():
     state_code = st.text_input("Enter state code (e.g., 'GA' for Georgia):")
     search_button = st.button("Search Events")
     choiceName = "No Selection Made"
-    choiceDate = "date"
-    choiceVenue = "venue"
+    choiceDate = "No Selection Made"
+    choiceVenue = "No Selection Made"
 
-    st.write("name: ",choiceName, "date:",choiceDate,"venue:",choiceVenue)
 
     
     if search_button:
@@ -67,6 +66,8 @@ def home_page():
                 st.write("No upcoming events found. Try a different search.")
         else:
             st.error(f"Error {response.status_code}: {response.text}")
+   
+    st.write("name: ", choiceName, "date:", choiceDate ,"venue:", choiceVenue) 
 
 #st.write("name: ", choiceName, "date:", choiceDate ,"venue:", choiceVenue)
 
