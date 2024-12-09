@@ -7,7 +7,7 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.preprocessing import LabelEncoder
 
 # Load the processed data and model setup
-processed_data_path = 'ProcessedTicketData.csv'
+processed_data_path = '/mnt/data/ProcessedTicketData.csv'
 data = pd.read_csv(processed_data_path)
 data['date'] = pd.to_datetime(data['date'])
 
