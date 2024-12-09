@@ -12,7 +12,7 @@ choiceVenue = "No Selection Made"
 name = ""
 date = ""
 venue = ""
-events = ""
+#events = ""
 
 
 # Initialize the current page in session state
