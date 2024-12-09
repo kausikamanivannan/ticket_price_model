@@ -25,7 +25,7 @@ def home_page():
     choiceName = "No Selection Made"
     choiceDate = "No Selection Made"
     choiceVenue = "No Selection Made"
-    events = NULL
+    events = ""
     
     if search_button:
         # Construct the API URL
