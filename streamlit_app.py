@@ -9,10 +9,10 @@ BASE_URL = "https://app.ticketmaster.com/discovery/v2/"
 choiceName = "No Selection Made"
 choiceDate = "No Selection Made"
 choiceVenue = "No Selection Made"
-name
-date
-venue
-events
+name = ""
+date = ""
+venue = ""
+events = ""
 
 
 # Initialize the current page in session state
