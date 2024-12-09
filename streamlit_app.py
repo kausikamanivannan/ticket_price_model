@@ -5,6 +5,13 @@ import requests
 API_KEY = "IqvAJBcdXQd2ySO7fh4k9Laa1M4AEJ0N"
 BASE_URL = "https://app.ticketmaster.com/discovery/v2/"
 
+# Define Global Veriables
+choiceName = "No Selection Made"
+choiceDate = "No Selection Made"
+choiceVenue = "No Selection Made"
+events = ""
+
+
 # Initialize the current page in session state
 if "current_page" not in st.session_state:
     st.session_state.current_page = "home"
@@ -22,10 +29,7 @@ def home_page():
     artist_name = st.text_input("Enter artist name:")
     state_code = st.text_input("Enter state code (e.g., 'GA' for Georgia):")
     search_button = st.button("Search Events")
-    choiceName = "No Selection Made"
-    choiceDate = "No Selection Made"
-    choiceVenue = "No Selection Made"
-    events = ""
+    
     
     if search_button:
         # Construct the API URL
