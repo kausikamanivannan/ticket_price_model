@@ -17,7 +17,6 @@ def change_page(page_name):
 # Define the Home Page
 def home_page():
     st.title("Ticketmaster Event Selector")
-    
 
     # User input for event search
     artist_name = st.text_input("Enter artist name:")
@@ -26,12 +25,8 @@ def home_page():
     choiceName = "No Selection Made"
     choiceDate = "No Selection Made"
     choiceVenue = "No Selection Made"
-    name = ""
-    date = ""
-    venue = ""
-    events = []
-    popcorn = "NO"
-    
+
+
     
     if search_button:
         # Construct the API URL
@@ -43,63 +38,61 @@ def home_page():
         }
 
         response = requests.get(f"{BASE_URL}events.json", params=params)
-    
+
         if response.status_code == 200:
             data = response.json()
             events = data.get("_embedded", {}).get("events", [])
-            popcorn = "YES!"
+
+            if events:
+                st.write(f"Found {len(events)} upcoming events:")
+
+                for event in events:
+                    name = event.get("name", "N/A")
+                    date = event.get("dates", {}).get("start", {}).get("localDate", "N/A")
+                    venue = event.get("_embedded", {}).get("venues", [{}])[0].get("name", "N/A")
+
+                    if st.button(f"Select: {name} at {venue} on {date}"):
+                        st.write("name: ", name, "date:",   date ,"venue:", venue)
+                        choiceName = name
+                        choiceDate = date
+                        choiceVenue = venue
+                    else:
+                        st.write("name: ", name, "date:",   date ,"venue:", venue)
+                        #choiceName = "No Selection Made"
+                        #choiceDate = "date"
+                        #choiceVenue = "venue"
+            #change_page('page_2.py')  # Navigate to the next page
+            else:
+                st.write("No upcoming events found. Try a different search.")
         else:
             st.error(f"Error {response.status_code}: {response.text}")
-            
-    st.write(popcorn)
-
-#     if events:
-#         st.write(f"Found {len(events)} upcoming events:")
-
-#         for event in events:
-#                 name = event.get("name", "N/A")
-#                 date = event.get("dates", {}).get("start", {}).get("localDate", "N/A")
-#                 venue = event.get("_embedded", {}).get("venues", [{}])[0].get("name", "N/A")
-#         if st.button(f"Select: {name} at {venue} on {date}"):
-#             st.write("name: ", name, "date:",   date ,"venue:", venue)
-#             choiceName = name
-#             choiceDate = date
-#             choiceVenue = venue
-#         else:
-#             st.write("name: ", name, "date:",   date ,"venue:", venue)
-#                         #choiceName = "No Selection Made"
-#                         #choiceDate = "date"
-#                         #choiceVenue = "venue"
-#             #change_page('page_2.py')  # Navigate to the next page
-#     else:
-#         st.write("No upcoming events found. Try a different search.")
-
    
-#     st.write("name: ", choiceName, "date:", choiceDate ,"venue:", choiceVenue) 
+    st.write("name: ", choiceName, "date:", choiceDate ,"venue:", choiceVenue) 
 
-# #st.write("name: ", choiceName, "date:", choiceDate ,"venue:", choiceVenue)
+#st.write("name: ", choiceName, "date:", choiceDate ,"venue:", choiceVenue)
 
 # Define the Next Page
-# def next_page():
-#     st.title("Selected Event Details")
+def next_page():
+    st.title("Selected Event Details")
 
-#     # Display selected event details
-#     if "selected_event" in st.session_state:
-#         selected_event = st.session_state.selected_event
-#         st.write("### Selected Event")
-#         st.write(f"- **Name**: {selected_event['name']}")
-#         st.write(f"- **Date**: {selected_event['date']}")
-#         st.write(f"- **Venue**: {selected_event['venue']}")
-#         st.write("Done")
-#     else:
-#         st.write("No event selected. Please go back to the home page.")
+    # Display selected event details
+    if "selected_event" in st.session_state:
+        selected_event = st.session_state.selected_event
+        st.write("### Selected Event")
+        st.write(f"- **Name**: {selected_event['name']}")
+        st.write(f"- **Date**: {selected_event['date']}")
+        st.write(f"- **Venue**: {selected_event['venue']}")
+        st.write("Done")
+    else:
+        st.write("No event selected. Please go back to the home page.")
 
-#     # Button to go back to the home page
-#     if st.button("Back to Home"):
-#         change_page("home")
+    # Button to go back to the home page
+    if st.button("Back to Home"):
+        change_page("home")
 
-# # Render the current page
-# if st.session_state.current_page == "home":
-#     home_page()
-# elif st.session_state.current_page == "next":
-#     next_page()
+# Render the current page
+if st.session_state.current_page == "home":
+    home_page()
+elif st.session_state.current_page == "next":
+    next_page()
+
