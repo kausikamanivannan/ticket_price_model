@@ -9,10 +9,10 @@ BASE_URL = "https://app.ticketmaster.com/discovery/v2/"
 choiceName = "No Selection Made"
 choiceDate = "No Selection Made"
 choiceVenue = "No Selection Made"
-name = ""
-date = ""
-venue = ""
-events = ""
+name
+date
+venue
+events
 
 
 # Initialize the current page in session state
@@ -47,7 +47,7 @@ def home_page():
     
         if response.status_code == 200:
             data = response.json()
-            global events = data.get("_embedded", {}).get("events", [])
+            events = data.get("_embedded", {}).get("events", [])
         else:
             st.error(f"Error {response.status_code}: {response.text}")
 
