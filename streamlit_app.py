@@ -7,14 +7,13 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.preprocessing import LabelEncoder
 
 # Load the processed data and model setup
-processed_data_path = 'ProcessedTicketData.csv'
+processed_data_path = '/mnt/data/ProcessedTicketData.csv'
 data = pd.read_csv(processed_data_path)
-data['date'] = pd.to_datetime(data['date'], utc=True)
+data['date'] = pd.to_datetime(data['date'])
 
 target = 'max_price'
 features = data.drop(columns=['event_id', 'max_price'])
 
-# Encode categorical columns
 encoders = {}
 for col in ['artist', 'venue', 'city', 'state', 'ticket_vendor']:
     if col in features:
@@ -25,7 +24,6 @@ for col in ['artist', 'venue', 'city', 'state', 'ticket_vendor']:
 X = features
 y = data[target]
 
-# Train the model
 model = RandomForestRegressor(n_estimators=100, random_state=42)
 model.fit(X, y)
 
@@ -92,7 +90,7 @@ if "selected_event" in st.session_state:
     for prediction_date in prediction_dates:
         features_sample = X.iloc[0].copy()
         features_sample['artist'] = encoders['artist'].transform([artist_name])[0]
-        features_sample['days_since_epoch'] = (prediction_date - datetime(1970, 1, 1)).total_seconds() / (60 * 60 * 24)
+        features_sample['days_since_epoch'] = (prediction_date - datetime(1970, 1, 1)).days
         predicted_price = model.predict([features_sample.values])[0]
         predicted_prices.append(predicted_price)
 
@@ -112,4 +110,3 @@ if "selected_event" in st.session_state:
     ax.set_ylabel("Price ($)")
     ax.legend()
     st.pyplot(fig)
-
