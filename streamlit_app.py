@@ -46,8 +46,8 @@ def home_page():
             st.error(f"Error {response.status_code}: {response.text}")
 
             
-        if events:
-                st.write(f"Found {len(events)} upcoming events:")
+    if events:
+            st.write(f"Found {len(events)} upcoming events:")
 
         for event in events:
             name = event.get("name", "N/A")
@@ -65,8 +65,8 @@ def home_page():
                         #choiceDate = "date"
                         #choiceVenue = "venue"
             #change_page('page_2.py')  # Navigate to the next page
-        else:
-            st.write("No upcoming events found. Try a different search.")
+     else:
+        st.write("No upcoming events found. Try a different search.")
 
    
     st.write("name: ", choiceName, "date:", choiceDate ,"venue:", choiceVenue) 
