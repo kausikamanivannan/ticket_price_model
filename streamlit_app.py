@@ -2,9 +2,9 @@ import streamlit as st
 import requests
 import pandas as pd
 import math
-#import matplotlib.pyplot as plt
-#from datetime import datetime, timedelta
-#from sklearn.ensemble import RandomForestRegressor
+import matplotlib.pyplot as plt
+from datetime import datetime, timedelta
+from sklearn.ensemble import RandomForestRegressor
 from sklearn.preprocessing import LabelEncoder
 
 # Load the processed data and model setup
