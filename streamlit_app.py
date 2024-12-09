@@ -68,7 +68,7 @@ def home_page():
         st.write("No upcoming events found. Try a different search.")
 
    
-    st.write("name: ", choiceName, "date:", choiceDate ,"venue:", choiceVenue) 
+    #st.write("name: ", choiceName, "date:", choiceDate ,"venue:", choiceVenue) 
 
 #st.write("name: ", choiceName, "date:", choiceDate ,"venue:", choiceVenue)
 
