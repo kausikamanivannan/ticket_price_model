@@ -59,7 +59,7 @@ if search_button:
                         "max_price": max_price,
                         "currency": currency,
                     }
-                    st.experimental_set_query_params(page="details")
+                    st.experimental_set_query_params(page="details.py")
                     st.experimental_rerun()
         else:
             st.write("No upcoming events found. Try a different search.")
