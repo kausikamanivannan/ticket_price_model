@@ -47,8 +47,8 @@ def home_page():
 
             
     if events:
-            st.write(f"Found {len(events)} upcoming events:")
-
+        st.write(f"Found {len(events)} upcoming events:")
+        
         for event in events:
             name = event.get("name", "N/A")
             date = event.get("dates", {}).get("start", {}).get("localDate", "N/A")
