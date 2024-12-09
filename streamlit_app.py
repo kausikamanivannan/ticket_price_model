@@ -87,6 +87,7 @@ print(f"R^2 Score: {r2}")
 # Mock predict_ticket_price function for demonstration
 def predict_ticket_price(days_from_event, ticket_price):
     # Simulate a decrease in ticket price as the event approaches
+    days_from_event = pd.to_datetime(days_from_event)
     predicted_price = max(10, ticket_price - (0.5 * days_from_event)) + random.uniform(-5, 5)
     return f"Predicted ticket price: ${predicted_price:.2f}"
     st.write(f"Predicted ticket price: ${predicted_price:.2f}")
