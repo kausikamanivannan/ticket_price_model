@@ -56,3 +56,7 @@ def home_page():
                         change_page("next")  # Navigate to the next page
             else:
                 st.write("No upcoming events found. Try a different search.")
+                
+        except 
+            requests.exceptions.RequestException as e: 
+                st.error(f"An error occurred: {e}") st.write("Please try again later or check your input.")
