@@ -77,7 +77,7 @@ def home_page():
    
     st.write("name: ", choiceName, "date:", choiceDate ,"venue:", choiceVenue) 
 
-st.write("name: ", choiceName, "date:", choiceDate ,"venue:", choiceVenue)
+#st.write("name: ", choiceName, "date:", choiceDate ,"venue:", choiceVenue)
 
 # Define the Next Page
 # def next_page():
