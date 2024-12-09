@@ -13,6 +13,7 @@ name = ""
 date = ""
 venue = ""
 events = []
+popcorn = "NO"
 
 
 # Initialize the current page in session state
@@ -48,10 +49,11 @@ def home_page():
         if response.status_code == 200:
             data = response.json()
             events = data.get("_embedded", {}).get("events", [])
+            popcorn = "YES!"
         else:
             st.error(f"Error {response.status_code}: {response.text}")
             
-        st.write(str.events)
+    st.write(popcorn)
 
 #     if events:
 #         st.write(f"Found {len(events)} upcoming events:")
