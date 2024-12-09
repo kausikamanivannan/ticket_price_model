@@ -6,82 +6,84 @@ API_KEY = "IqvAJBcdXQd2ySO7fh4k9Laa1M4AEJ0N"
 BASE_URL = "https://app.ticketmaster.com/discovery/v2/"
 
 # Define Global Veriables
-choiceName = "No Selection Made"
-choiceDate = "No Selection Made"
-choiceVenue = "No Selection Made"
-name = ""
-date = ""
-venue = ""
-events = []
-popcorn = "NO"
+
 
 str.write(popcorn)
-# Initialize the current page in session state
-# if "current_page" not in st.session_state:
-#     st.session_state.current_page = "home"
+Initialize the current page in session state
+if "current_page" not in st.session_state:
+    st.session_state.current_page = "home"
 
-# # Function to change the page
-# def change_page(page_name):
-#     st.session_state.current_page = page_name
-#     st.experimental_rerun()
+# Function to change the page
+def change_page(page_name):
+    st.session_state.current_page = page_name
+    st.experimental_rerun()
 
-# # Define the Home Page
-# def home_page():
-#     st.title("Ticketmaster Event Selector")
+# Define the Home Page
+def home_page():
+    st.title("Ticketmaster Event Selector")
+    
 
-#     # User input for event search
-#     artist_name = st.text_input("Enter artist name:")
-#     state_code = st.text_input("Enter state code (e.g., 'GA' for Georgia):")
-#     search_button = st.button("Search Events")
+    # User input for event search
+    artist_name = st.text_input("Enter artist name:")
+    state_code = st.text_input("Enter state code (e.g., 'GA' for Georgia):")
+    search_button = st.button("Search Events")
+    choiceName = "No Selection Made"
+    choiceDate = "No Selection Made"
+    choiceVenue = "No Selection Made"
+    name = ""
+    date = ""
+    venue = ""
+    events = []
+    popcorn = "NO"
     
     
-#     if search_button:
-#         # Construct the API URL
-#         params = {
-#             "apikey": API_KEY,
-#             "keyword": artist_name,
-#             "stateCode": state_code,
-#             "classificationName": "Music"
-#         }
+    if search_button:
+        # Construct the API URL
+        params = {
+            "apikey": API_KEY,
+            "keyword": artist_name,
+            "stateCode": state_code,
+            "classificationName": "Music"
+        }
 
-#         response = requests.get(f"{BASE_URL}events.json", params=params)
+        response = requests.get(f"{BASE_URL}events.json", params=params)
     
-#         if response.status_code == 200:
-#             data = response.json()
-#             events = data.get("_embedded", {}).get("events", [])
-#             popcorn = "YES!"
-#         else:
-#             st.error(f"Error {response.status_code}: {response.text}")
+        if response.status_code == 200:
+            data = response.json()
+            events = data.get("_embedded", {}).get("events", [])
+            popcorn = "YES!"
+        else:
+            st.error(f"Error {response.status_code}: {response.text}")
             
-#     st.write(popcorn)
+    st.write(popcorn)
 
-#     if events:
-#         st.write(f"Found {len(events)} upcoming events:")
+    if events:
+        st.write(f"Found {len(events)} upcoming events:")
 
-#         for event in events:
-#                 name = event.get("name", "N/A")
-#                 date = event.get("dates", {}).get("start", {}).get("localDate", "N/A")
-#                 venue = event.get("_embedded", {}).get("venues", [{}])[0].get("name", "N/A")
-#         if st.button(f"Select: {name} at {venue} on {date}"):
-#             st.write("name: ", name, "date:",   date ,"venue:", venue)
-#             choiceName = name
-#             choiceDate = date
-#             choiceVenue = venue
-#         else:
-#             st.write("name: ", name, "date:",   date ,"venue:", venue)
-#                         #choiceName = "No Selection Made"
-#                         #choiceDate = "date"
-#                         #choiceVenue = "venue"
-#             #change_page('page_2.py')  # Navigate to the next page
-#     else:
-#         st.write("No upcoming events found. Try a different search.")
+        for event in events:
+                name = event.get("name", "N/A")
+                date = event.get("dates", {}).get("start", {}).get("localDate", "N/A")
+                venue = event.get("_embedded", {}).get("venues", [{}])[0].get("name", "N/A")
+        if st.button(f"Select: {name} at {venue} on {date}"):
+            st.write("name: ", name, "date:",   date ,"venue:", venue)
+            choiceName = name
+            choiceDate = date
+            choiceVenue = venue
+        else:
+            st.write("name: ", name, "date:",   date ,"venue:", venue)
+                        #choiceName = "No Selection Made"
+                        #choiceDate = "date"
+                        #choiceVenue = "venue"
+            #change_page('page_2.py')  # Navigate to the next page
+    else:
+        st.write("No upcoming events found. Try a different search.")
 
    
-#     st.write("name: ", choiceName, "date:", choiceDate ,"venue:", choiceVenue) 
+    st.write("name: ", choiceName, "date:", choiceDate ,"venue:", choiceVenue) 
 
-# st.write("name: ", choiceName, "date:", choiceDate ,"venue:", choiceVenue)
+st.write("name: ", choiceName, "date:", choiceDate ,"venue:", choiceVenue)
 
-# Define the Next Page
+Define the Next Page
 def next_page():
     st.title("Selected Event Details")
 
