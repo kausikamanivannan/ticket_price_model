@@ -38,7 +38,6 @@ if search_button:
 
                 if st.button(f"Select: {name} at {venue} on {date}"):
                     st.session_state.selected_event = {
-                        "id": event.get("id"),
                         "name": name,
                         "date": date,
                         "venue": venue
@@ -56,49 +55,8 @@ if "selected_event" in st.session_state:
     st.write(f"- **Name**: {selected_event['name']}")
     st.write(f"- **Date**: {selected_event['date']}")
     st.write(f"- **Venue**: {selected_event['venue']}")
+    st.write("Done")
 
-    # Fetch detailed event information
-    event_id = selected_event['id']
-    st.write(f"Fetching details for event ID: {event_id}")  # Debugging message
-    detail_response = requests.get(f"{BASE_URL}events/{event_id}.json", params={"apikey": API_KEY})
-
-    if detail_response.status_code == 200:
-        detail_data = detail_response.json()
-        st.write("Detailed event data fetched successfully!")  # Debugging message
-
-        # Display additional details
-        st.write("### Event Details")
-
-        # Artists/Performers
-        performers = detail_data.get("_embedded", {}).get("attractions", [])
-        if performers:
-            st.write("**Artists/Performers:**")
-            for performer in performers:
-                st.write(f"- {performer.get('name', 'N/A')}")
-        else:
-            st.write("No artist information available.")
-
-        # Ticket Prices
-        price_ranges = detail_data.get("priceRanges", [])
-        if price_ranges:
-            st.write("**Ticket Prices:**")
-            for price_range in price_ranges:
-                min_price = price_range.get("min", "N/A")
-                max_price = price_range.get("max", "N/A")
-                currency = price_range.get("currency", "USD")
-                st.write(f"- {min_price} - {max_price} {currency}")
-        else:
-            st.write("No ticket price information available.")
-
-        # Additional Event Info
-        info = detail_data.get("info", "N/A")
-        if info:
-            st.write("**Additional Info:**")
-            st.write(info)
-    else:
-        st.error(f"Error {detail_response.status_code}: {detail_response.text}")
-        st.write("### Debugging Info")
-        st.json(detail_response.json())
 
 
 # import streamlit as st
