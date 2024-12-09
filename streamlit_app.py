@@ -22,6 +22,9 @@ def home_page():
     artist_name = st.text_input("Enter artist name:")
     state_code = st.text_input("Enter state code (e.g., 'GA' for Georgia):")
     search_button = st.button("Search Events")
+    choiceName = "No Selection Made"
+    choiceDate = "date"
+    choiceVenue = "venue"
 
     if search_button:
         # Construct the API URL
