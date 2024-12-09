@@ -1,7 +1,7 @@
 streamlit
 
 matplotlib
-scikit-learn
+sklearn
 pandas
 numpy
 requests
