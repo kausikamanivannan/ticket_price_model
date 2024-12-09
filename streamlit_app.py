@@ -45,29 +45,29 @@ def home_page():
         else:
             st.error(f"Error {response.status_code}: {response.text}")
 
-    if events:
-        st.write(f"Found {len(events)} upcoming events:")
+    # if events:
+    #     st.write(f"Found {len(events)} upcoming events:")
 
-        for event in events:
-                name = event.get("name", "N/A")
-                date = event.get("dates", {}).get("start", {}).get("localDate", "N/A")
-                venue = event.get("_embedded", {}).get("venues", [{}])[0].get("name", "N/A")
-        if st.button(f"Select: {name} at {venue} on {date}"):
-            st.write("name: ", name, "date:",   date ,"venue:", venue)
-            choiceName = name
-            choiceDate = date
-            choiceVenue = venue
-        else:
-            st.write("name: ", name, "date:",   date ,"venue:", venue)
-                        #choiceName = "No Selection Made"
-                        #choiceDate = "date"
-                        #choiceVenue = "venue"
-            #change_page('page_2.py')  # Navigate to the next page
-    else:
-        st.write("No upcoming events found. Try a different search.")
+    #     for event in events:
+    #             name = event.get("name", "N/A")
+    #             date = event.get("dates", {}).get("start", {}).get("localDate", "N/A")
+    #             venue = event.get("_embedded", {}).get("venues", [{}])[0].get("name", "N/A")
+    #     if st.button(f"Select: {name} at {venue} on {date}"):
+    #         st.write("name: ", name, "date:",   date ,"venue:", venue)
+    #         choiceName = name
+    #         choiceDate = date
+    #         choiceVenue = venue
+    #     else:
+    #         st.write("name: ", name, "date:",   date ,"venue:", venue)
+    #                     #choiceName = "No Selection Made"
+    #                     #choiceDate = "date"
+    #                     #choiceVenue = "venue"
+    #         #change_page('page_2.py')  # Navigate to the next page
+    # else:
+    #     st.write("No upcoming events found. Try a different search.")
 
    
-    st.write("name: ", choiceName, "date:", choiceDate ,"venue:", choiceVenue) 
+    # st.write("name: ", choiceName, "date:", choiceDate ,"venue:", choiceVenue) 
 
 #st.write("name: ", choiceName, "date:", choiceDate ,"venue:", choiceVenue)
 
