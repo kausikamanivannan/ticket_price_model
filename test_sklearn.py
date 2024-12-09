@@ -106,7 +106,7 @@ if search_button:
                 max_price = price_ranges.get("max", "N/A")
                 currency = price_ranges.get("currency", "USD")
 
-                if st.button(f"Select: {name} at {venue} on {date} ({day_of_week})"):
+                if st.button(f"Select: {name} at {venue} on {date} ({day_of_week}) {min_price}"):
                     st.session_state.selected_event = {
                         "name": name,
                         "date": date,
