@@ -47,16 +47,22 @@ def home_page():
                     venue = event.get("_embedded", {}).get("venues", [{}])[0].get("name", "N/A")
 
                     if st.button(f"Select: {name} at {venue} on {date}"):
-                        st.write("name: ", name, "date:",   date ,"venue:", venue)
+                        #st.write("name: ", name, "date:",   date ,"venue:", venue)
+                        choiceName = name
+                        choiceDate = date
+                        choiceVenue = venue
+                        
                     else:
-                        st.write("No upcoming events found. Try a different search.")
+                        choiceName = "No Selection Made"
+                        choiceDate = "date"
+                        choiceVenue = "venue"
             #change_page('page_2.py')  # Navigate to the next page
             else:
                 st.write("No upcoming events found. Try a different search.")
         else:
             st.error(f"Error {response.status_code}: {response.text}")
 
-
+st.write("name: ", choiceName, "date:", choiceDate ,"venue:", choiceVenue)
 
 # Define the Next Page
 def next_page():
