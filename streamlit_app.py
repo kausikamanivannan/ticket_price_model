@@ -7,8 +7,6 @@ BASE_URL = "https://app.ticketmaster.com/discovery/v2/"
 
 # Define Global Veriables
 
-
-str.write(popcorn)
 Initialize the current page in session state
 if "current_page" not in st.session_state:
     st.session_state.current_page = "home"
