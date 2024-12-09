@@ -30,6 +30,8 @@ if 'date' in features:
     features = features.drop(columns=['date'])
 
 features['days_since_epoch'] = (data['date'] - pd.Timestamp("1970-01-01")).dt.total_seconds() / (60 * 60 * 24)
+
+features = features.select_dtypes(include=['number'])
 ############################################################################################################
 
 
