@@ -42,7 +42,7 @@ if search_button:
                         "date": date,
                         "venue": venue
                     }
-                    st.experimental_rerun()
+                    #st.experimental_rerun()
         else:
             st.write("No upcoming events found. Try a different search.")
     else:
