@@ -84,55 +84,55 @@ r2 = r2_score(y_test, y_pred)
 print(f"Mean Squared Error (MSE): {mse}")
 print(f"R^2 Score: {r2}")
 
-# Mock predict_ticket_price function for demonstration
-def predict_ticket_price(days_from_event, ticket_price):
-    # Simulate a decrease in ticket price as the event approaches
-    predicted_price = max(10, ticket_price - (0.5 * days_from_event)) + random.uniform(-5, 5)
-    return f"Predicted ticket price: ${predicted_price:.2f}"
+# # Mock predict_ticket_price function for demonstration
+# def predict_ticket_price(days_from_event, ticket_price):
+#     # Simulate a decrease in ticket price as the event approaches
+#     predicted_price = max(10, ticket_price - (0.5 * days_from_event)) + random.uniform(-5, 5)
+#     return f"Predicted ticket price: ${predicted_price:.2f}"
 
-# Function to predict ticket prices per day leading up to the event
-def predict_ticket_price_per_day(event_date, ticket_price):
-    current_date = pd.Timestamp.now()
-    days_range = (event_date - current_date).days
-    prices = []
-    dates = []
+# # Function to predict ticket prices per day leading up to the event
+# def predict_ticket_price_per_day(event_date, ticket_price):
+#     current_date = pd.Timestamp.now()
+#     days_range = (event_date - current_date).days
+#     prices = []
+#     dates = []
 
-    for days_from_event in range(days_range + 1):
-        predicted_price = predict_ticket_price(days_from_event, ticket_price)
-        if predicted_price:
-            prices.append(float(predicted_price.split("$")[1]))
-            dates.append(current_date + pd.Timedelta(days=days_from_event))
+#     for days_from_event in range(days_range + 1):
+#         predicted_price = predict_ticket_price(days_from_event, ticket_price)
+#         if predicted_price:
+#             prices.append(float(predicted_price.split("$")[1]))
+#             dates.append(current_date + pd.Timedelta(days=days_from_event))
 
-    return dates, prices
+#     return dates, prices
 
-# Event date and ticket price setup
-#event_date = pd.Timestamp('2024-12-25')
-ticket_price = int(input("Enter the current ticket price: ")) #50.00
-import pandas as pd
+# # Event date and ticket price setup
+# #event_date = pd.Timestamp('2024-12-25')
+# ticket_price = int(input("Enter the current ticket price: ")) #50.00
+# import pandas as pd
 
-# Function to get and validate user input
-def get_event_date():
-    while True:
-        user_input = input("Enter the event date in the format YYYY-MM-DD: ")
-        try:
-            # Convert the input string to a pandas Timestamp
-            event_date = pd.Timestamp(user_input)
-            print(f"Event date is set to: {event_date}")
-            return event_date
-        except ValueError:
-            print("Invalid date format! Please try again.")
+# # Function to get and validate user input
+# def get_event_date():
+#     while True:
+#         user_input = input("Enter the event date in the format YYYY-MM-DD: ")
+#         try:
+#             # Convert the input string to a pandas Timestamp
+#             event_date = pd.Timestamp(user_input)
+#             print(f"Event date is set to: {event_date}")
+#             return event_date
+#         except ValueError:
+#             print("Invalid date format! Please try again.")
 
-# Call the function
-event_date = get_event_date()
+# # Call the function
+# event_date = get_event_date()
 
 
-dates, prices = predict_ticket_price_per_day(event_date, ticket_price)
+# dates, prices = predict_ticket_price_per_day(event_date, ticket_price)
 
-# Find the lowest price and the corresponding date
-lowest_price = min(prices)
-lowest_price_date = dates[prices.index(lowest_price)]
+# # Find the lowest price and the corresponding date
+# lowest_price = min(prices)
+# lowest_price_date = dates[prices.index(lowest_price)]
 
-print(f"Lowest price: ${lowest_price:.2f} on {lowest_price_date.date()}")
+# print(f"Lowest price: ${lowest_price:.2f} on {lowest_price_date.date()}")
 
 # Plot the prices over time
 # plt.figure(figsize=(10, 6))
