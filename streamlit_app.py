@@ -84,11 +84,11 @@ r2 = r2_score(y_test, y_pred)
 print(f"Mean Squared Error (MSE): {mse}")
 print(f"R^2 Score: {r2}")
 
-# # Mock predict_ticket_price function for demonstration
-# def predict_ticket_price(days_from_event, ticket_price):
-#     # Simulate a decrease in ticket price as the event approaches
-#     predicted_price = max(10, ticket_price - (0.5 * days_from_event)) + random.uniform(-5, 5)
-#     return f"Predicted ticket price: ${predicted_price:.2f}"
+# Mock predict_ticket_price function for demonstration
+def predict_ticket_price(days_from_event, ticket_price):
+    # Simulate a decrease in ticket price as the event approaches
+    predicted_price = max(10, ticket_price - (0.5 * days_from_event)) + random.uniform(-5, 5)
+    return f"Predicted ticket price: ${predicted_price:.2f}"
 
 # # Function to predict ticket prices per day leading up to the event
 # def predict_ticket_price_per_day(event_date, ticket_price):
