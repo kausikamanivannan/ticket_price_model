@@ -51,7 +51,7 @@ def home_page():
         else:
             st.error(f"Error {response.status_code}: {response.text}")
             
-        st.write(events)
+        st.write(str.events)
 
 #     if events:
 #         st.write(f"Found {len(events)} upcoming events:")
