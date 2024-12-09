@@ -26,6 +26,9 @@ def home_page():
     choiceDate = "date"
     choiceVenue = "venue"
 
+    st.write("name: ",choiceName, "date:",choiceDate,"venue:",choiceVenue)
+
+    
     if search_button:
         # Construct the API URL
         params = {
