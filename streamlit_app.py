@@ -52,13 +52,12 @@ def home_page():
                     name = event.get("name", "N/A")
                     date = event.get("dates", {}).get("start", {}).get("localDate", "N/A")
                     venue = event.get("_embedded", {}).get("venues", [{}])[0].get("name", "N/A")
-
-               if st.button(f"Select: {name} at {venue} on {date}"):
+                    if st.button(f"Select: {name} at {venue} on {date}"):
                         st.write("name: ", name, "date:",   date ,"venue:", venue)
                         choiceName = name
                         choiceDate = date
                         choiceVenue = venue
-                else:
+                    else:
                         st.write("name: ", name, "date:",   date ,"venue:", venue)
                         #choiceName = "No Selection Made"
                         #choiceDate = "date"
