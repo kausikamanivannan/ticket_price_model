@@ -42,8 +42,7 @@ def home_page():
         if response.status_code == 200:
             data = response.json()
             events = data.get("_embedded", {}).get("events", [])
-
-       else:
+        else:
             st.error(f"Error {response.status_code}: {response.text}")
 
         if events:
