@@ -135,7 +135,7 @@ def home_page():
                     st.write(f"**Venue**: {venue}")
                     st.write(f"**Minimum Price**: ${min_price}")
 
-                    if st.button(f"Select {name}"):
+                    if st.button(f"Select {name}", key=f"select_{name}_{date}"):
                         st.session_state.selected_event = {
                             "name": name,
                             "date": date,
